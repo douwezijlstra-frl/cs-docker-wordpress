@@ -68,7 +68,7 @@ jobs:
           tags: |
             cmptstks/wordpress:php7.4-litespeed
             cmptstks/wordpress:latest
-            ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:php7.4-litespeed
-            ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest
+            ${{ env.REGISTRY }}/computestacks/cs-docker-wordpress:php7.4-litespeed
+            ${{ env.REGISTRY }}/computestacks/cs-docker-wordpress:latest
           # tags: ${{ steps.meta.outputs.tags }}
           # labels: ${{ steps.meta.outputs.labels }}
