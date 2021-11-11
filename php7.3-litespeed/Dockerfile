@@ -1,6 +1,10 @@
 FROM cmptstks/php:7.3-litespeed
 
-LABEL maintainer="ComputeStacks <hello@computestacks.com>"
+LABEL maintainer="https://github.com/ComputeStacks"
+LABEL org.opencontainers.image.authors="https://github.com/ComputeStacks"
+LABEL org.opencontainers.image.source="https://github.com/ComputeStacks/cs-docker-wordpress/tree/main/php7.3-litespeed"
+LABEL org.opencontainers.image.url="https://github.com/ComputeStacks/cs-docker-wordpress/tree/main/php7.3-litespeed"
+LABEL org.opencontainers.image.title="Wordpress with PHP 7.3 and OpenLiteSpeed"
 
 COPY 10-wordpress.sh /etc/my_init.d/
 COPY root/vhosts /usr/src/lsws/conf/vhosts/
