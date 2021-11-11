@@ -5,9 +5,6 @@ on:
 
 env:
   REGISTRY: ghcr.io
-  REGISTRY_ACCOUNT: computestacks
-  IMAGE_NAME: ${{ github.repository }}
-  TAG_NAME: php7.4-litespeed
 
 jobs:
   build:
@@ -39,5 +36,5 @@ jobs:
           platforms: linux/amd64
           push: ${{ github.event_name != 'pull_request' }}
           tags: |
-            $REGISTRY/$REGISTRY_ACCOUNT/$IMAGE_NAME:$TAG_NAME
-            $REGISTRY/$REGISTRY_ACCOUNT/$IMAGE_NAME:latest
+            $REGISTRY/computestacks/cs-docker-wordpress:php7.4-litespeed
+            $REGISTRY/computestacks/cs-docker-wordpress:latest
