@@ -39,5 +39,5 @@ jobs:
           platforms: linux/amd64
           push: ${{ github.event_name != 'pull_request' }}
           tags: |
-            $REGISTRY/$REGISTRY/$IMAGE_NAME:$TAG_NAME
-            $REGISTRY/$REGISTRY/$IMAGE_NAME:latest
+            $REGISTRY/$REGISTRY_ACCOUNT/$IMAGE_NAME:$TAG_NAME
+            $REGISTRY/$REGISTRY_ACCOUNT/$IMAGE_NAME:latest
