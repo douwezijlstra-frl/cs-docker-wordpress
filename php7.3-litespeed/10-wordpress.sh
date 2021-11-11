@@ -1,7 +1,6 @@
 #!/bin/bash
-set -euo pipefail
 
-mkdir -p /var/www/html/wordpress
+mkdir -p /var/www/html/wordpress && chown www-data:www-data /var/www/html/wordpress
 cd /var/www/html/wordpress
 
 wait_for_db() {
@@ -23,15 +22,21 @@ setup_db() {
   mysql -h $WORDPRESS_DB_HOST -u $WORDPRESS_DB_USER -p$WORDPRESS_DB_PASSWORD --skip-column-names -e "CREATE DATABASE IF NOT EXISTS $WORDPRESS_DB_NAME;"
 }
 
-if ! [ "$(ls -A)" ]; then
-  echo >&2 "No files found in $PWD - installing wordpress..."  
+# Install plugin function installs first plugin specified, e.g. 'install_plugin litespeed'
+install_plugin() {
+  echo >&2 "Installing $1..."
+  sudo -u www-data wp plugin install $1 --activate && echo "Plugin $1 installed and activated succesfully!" || "Installing $1 failed; check if plugin name is correctly specified"
+}
 
+if ! [ "$(ls -A)" ]; then
+  echo >&2 "No files found in $PWD - installing wordpress..."
+  
   # Create DB
   wait_for_db
   setup_db
 
   mv /usr/src/wordpress/* .
-  wp config create --dbhost=$WORDPRESS_DB_HOST --dbname=$WORDPRESS_DB_NAME --dbuser=$WORDPRESS_DB_USER --dbpass=$WORDPRESS_DB_PASSWORD --allow-root --extra-php << 'PHP'
+  sudo -u www-data wp config create --dbhost=$WORDPRESS_DB_HOST --dbname=$WORDPRESS_DB_NAME --dbuser=$WORDPRESS_DB_USER --dbpass=$WORDPRESS_DB_PASSWORD --extra-php << 'PHP'
 // If we're behind a proxy server and using HTTPS, we need to alert Wordpress of that fact
 // see also http://codex.wordpress.org/Administration_Over_SSL#Using_a_Reverse_Proxy
 if (isset($_SERVER['HTTP_X_FORWARDED_PROTO']) && $_SERVER['HTTP_X_FORWARDED_PROTO'] === 'https') {
@@ -41,7 +46,7 @@ define('FS_METHOD', 'direct');
 define('WP_MEMORY_LIMIT', '96M');
 PHP
   if [ ! -e .htaccess ]; then
-    cat > .htaccess <<-'EOF'
+    sudo -u www-data cat > .htaccess <<-'EOF'
 # BEGIN WordPress
 <IfModule mod_rewrite.c>
 RewriteEngine On
@@ -57,22 +62,36 @@ EOF
     fi
 
   echo >&2 "Installing Wordpress..."
-  wp core install --url=$WORDPRESS_URL --title="$WORDPRESS_TITLE" --admin_user=$WORDPRESS_USER --admin_password=$WORDPRESS_PASSWORD --admin_email="$WORDPRESS_EMAIL" --skip-email --allow-root
+  sudo -u www-data wp core install --url=$WORDPRESS_URL --title="$WORDPRESS_TITLE" --admin_user=$WORDPRESS_USER --admin_password=$WORDPRESS_PASSWORD --admin_email="$WORDPRESS_EMAIL" --skip-email
 
-  echo >&2 "Installing litespeed cache..."
-  wp plugin install litespeed-cache --allow-root
+  if [[ -z "$WORDPRESS_PLUGINLIST" ]]; then
+    echo "Pluginlist-variable empty: installing default plugins Litespeed cache, WP Mail"
+    WORDPRESS_PLUGINLIST="litespeed-cache,wp-mail-smtp"
+  else
+    IFS=',' read -r -a array <<< "$WORDPRESS_PLUGINLIST"
+    for i in "${array[@]}"
+    do
+      install_plugin $i
+    done
+  fi
 
-  echo >&2 "Installing SMTP plugin..."
-  wp plugin install wp-mail-smtp --activate --allow-root
+  # check if timezone-variable exists, else default to UTC
+  if [[ -z "$WORDPRESS_TIMEZONE" ]]; then
+    echo "Timezone not specified: defaulting to UTC"
+  else
+    echo >&2 "Setting timezone to $WORDPRESS_TIMEZONE..."
+    sudo -u www-data wp option update timezone_string $WORDPRESS_TIMEZONE
+  fi
+
+  # check if timezone-variable exists, else default to English
+  if [[ -z "$WORDPRESS_LANGUAGE" ]]; then
+    echo "Language not specified: defaulting to English"
+  else
+    echo >&2 "Setting language to $WORDPRESS_LANGUAGE"
+    sudo -u www-data wp language core install $WORDPRESS_LANGUAGE
+  fi
 
   echo >&2 "Restarting webserver to enable cache..."
   /usr/local/lsws/bin/lswsctrl restart
 
-  chown -R www-data:www-data /var/www/html/
-
 fi
-
-# Take ownership of parent directories
-chown www-data:www-data /var/www \
-  && chown www-data:www-data /var/www/html \
-  && chown www-data:www-data /var/www/html/wordpress

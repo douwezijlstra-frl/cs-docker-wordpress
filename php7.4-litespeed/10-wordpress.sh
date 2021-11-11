@@ -64,33 +64,34 @@ EOF
   echo >&2 "Installing Wordpress..."
   sudo -u www-data wp core install --url=$WORDPRESS_URL --title="$WORDPRESS_TITLE" --admin_user=$WORDPRESS_USER --admin_password=$WORDPRESS_PASSWORD --admin_email="$WORDPRESS_EMAIL" --skip-email
 
+  if [[ -z "$WORDPRESS_PLUGINLIST" ]]; then
+    echo "Pluginlist-variable empty: installing default plugins Litespeed cache, WP Mail"
+    WORDPRESS_PLUGINLIST="litespeed-cache,wp-mail-smtp"
+  else
+    IFS=',' read -r -a array <<< "$WORDPRESS_PLUGINLIST"
+    for i in "${array[@]}"
+    do
+      install_plugin $i
+    done
+  fi
+
+  # check if timezone-variable exists, else default to UTC
+  if [[ -z "$WORDPRESS_TIMEZONE" ]]; then
+    echo "Timezone not specified: defaulting to UTC"
+  else
+    echo >&2 "Setting timezone to $WORDPRESS_TIMEZONE..."
+    sudo -u www-data wp option update timezone_string $WORDPRESS_TIMEZONE
+  fi
+
+  # check if timezone-variable exists, else default to English
+  if [[ -z "$WORDPRESS_LANGUAGE" ]]; then
+    echo "Language not specified: defaulting to English"
+  else
+    echo >&2 "Setting language to $WORDPRESS_LANGUAGE"
+    sudo -u www-data wp language core install $WORDPRESS_LANGUAGE
+  fi
+
   echo >&2 "Restarting webserver to enable cache..."
   /usr/local/lsws/bin/lswsctrl restart
 
-fi
-
-if [[ -z "$WORDPRESS_PLUGINLIST" ]]; then
-  echo "Pluginlist-variable empty, skipping install..."
-else
-  IFS=',' read -r -a array <<< "$WORDPRESS_PLUGINLIST"
-  for i in "${array[@]}"
-  do
-    install_plugin $i
-  done
-fi
-
-# check if timezone-variable exists, else default to UTC
-if [[ -z "$WORDPRESS_TIMEZONE" ]]; then
-  echo "Timezone not specified: defaulting to UTC"
-else
-  echo >&2 "Setting timezone to $WORDPRESS_TIMEZONE..."
-  sudo -u www-data wp option update timezone_string $WORDPRESS_TIMEZONE
-fi
-
-# check if timezone-variable exists, else default to English
-if [[ -z "$WORDPRESS_LANGUAGE" ]]; then
-  echo "Language not specified: defaulting to English"
-else
-  echo >&2 "Setting language to $WORDPRESS_LANGUAGE"
-  sudo -u www-data wp language core install $WORDPRESS_LANGUAGE
 fi
