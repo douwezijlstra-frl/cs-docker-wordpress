@@ -36,5 +36,5 @@ jobs:
           platforms: linux/amd64
           push: ${{ github.event_name != 'pull_request' }}
           tags: |
-            $REGISTRY/computestacks/cs-docker-wordpress:php7.4-litespeed
-            $REGISTRY/computestacks/cs-docker-wordpress:latest
+            ghcr.io/computestacks/cs-docker-wordpress:php7.4-litespeed
+            ghcr.io/computestacks/cs-docker-wordpress:latest
