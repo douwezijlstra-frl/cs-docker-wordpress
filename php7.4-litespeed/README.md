@@ -20,19 +20,19 @@
     </tr>
     <tr>
       <td>WORDPRESS_DB_NAME</td>
-      <td>IP or Hostname of MySQL Database</td>
+      <td>Name of database</td>
       <td><pre>null</pre></td>
       <td></td>
     </tr>
     <tr>
       <td>WORDPRESS_DB_USER</td>
-      <td>IP or Hostname of MySQL Database</td>
-      <td><pre>null</pre></td>
+      <td>Database username</td>
+      <td><pre>root</pre></td>
       <td></td>
     </tr>
     <tr>
       <td>WORDPRESS_DB_PASSWORD</td>
-      <td>IP or Hostname of MySQL Database</td>
+      <td>Database User password</td>
       <td><pre>null</pre></td>
       <td></td>
     </tr>
