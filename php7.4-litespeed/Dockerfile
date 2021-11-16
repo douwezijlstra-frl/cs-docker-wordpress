@@ -6,7 +6,7 @@ LABEL org.opencontainers.image.source="https://github.com/ComputeStacks/cs-docke
 LABEL org.opencontainers.image.url="https://github.com/ComputeStacks/cs-docker-wordpress/tree/main/php7.4-litespeed"
 LABEL org.opencontainers.image.title="Wordpress with PHP 7.4 and OpenLiteSpeed"
 
-COPY 10-wordpress.sh /etc/my_init.d/
+COPY 25-wordpress.sh /etc/my_init.d/
 COPY root/vhosts /usr/src/lsws/conf/vhosts/
 
 RUN set -ex; \
