@@ -10,7 +10,7 @@ COPY 10-wordpress.sh /etc/my_init.d/
 COPY root/vhosts /usr/src/lsws/conf/vhosts/
 
 RUN set -ex; \
-    chmod +x /etc/my_init.d/10-wordpress.sh; \
+    chmod +x /etc/my_init.d/25-wordpress.sh; \
     cd /usr/src; \
     sed -i 's/  map                     Default/  map                     Wordpress/g' /usr/src/lsws/conf/httpd_config.conf; \
     echo '\n\
