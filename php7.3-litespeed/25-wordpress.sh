@@ -46,7 +46,7 @@ define('FS_METHOD', 'direct');
 define('WP_MEMORY_LIMIT', '96M');
 PHP
   if [ ! -e .htaccess ]; then
-    sudo -u www-data cat > .htaccess <<-'EOF'
+    cat > .htaccess <<-'EOF'
 # BEGIN WordPress
 <IfModule mod_rewrite.c>
 RewriteEngine On
@@ -59,6 +59,7 @@ RewriteRule . /index.php [L]
 # END WordPress
 SetEnvIf X-Forwarded-Proto "https" HTTPS=on
 EOF
+      chown www-data:www-data .htaccess
     fi
 
   echo >&2 "Installing Wordpress..."
