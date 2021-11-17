@@ -34,7 +34,7 @@ _Note: These only apply during initial installation. Once there are files in the
       <td><pre>null</pre></td>
     </tr>
     <tr>
-      <td>WORDPRESS_PLUGLIST</td>
+      <td>WORDPRESS_PLUGINLIST</td>
       <td>comma separated list of plugins to install</td>
       <td><pre>litespeed-cache,wp-mail-smtp</pre></td>
     </tr>
