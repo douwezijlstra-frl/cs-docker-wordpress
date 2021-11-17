@@ -47,7 +47,27 @@ _Note: These only apply during initial installation. Once there are files in the
       <td>WORDPRESS_LANGUAGE</td>
       <td>Language pack to install</td>
       <td><pre>en_US</pre></td>
-    </tr>    
+    </tr>
+    <tr>
+      <td>SMTP_SERVER</td>
+      <td>IP or Hostname of the SMTP server</td>
+      <td><pre>null</pre></td>
+    </tr>
+    <tr>
+      <td>SMTP_PASSWORD</td>
+      <td>SMTP Password</td>
+      <td><pre>null</pre></td>
+    </tr>
+    <tr>
+      <td>SMTP_USERNAME</td>
+      <td>Username</td>
+      <td><pre>null</pre></td>
+    </tr>
+    <tr>
+      <td>SMTP_PORT</td>
+      <td>smtp port</td>
+      <td><pre>null</pre></td>
+    </tr>
   </tbody>
 </table>
 
