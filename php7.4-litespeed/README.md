@@ -68,6 +68,11 @@ _Note: These only apply during initial installation. Once there are files in the
       <td>smtp port</td>
       <td><pre>null</pre></td>
     </tr>
+    <tr>
+      <td>PM_STREAM</td>
+      <td>Postmark Message Stream ID</td>
+      <td><pre>null</pre></td>
+    </tr>
   </tbody>
 </table>
 
