@@ -90,6 +90,7 @@ EOF
   else
     echo >&2 "Setting language to $WORDPRESS_LANGUAGE"
     sudo -u www-data wp language core install $WORDPRESS_LANGUAGE
+    sudo -u www-data wp language core activate $WORDPRESS_LANGUAGE
   fi
 
   echo >&2 "Restarting webserver to enable cache..."
