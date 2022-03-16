@@ -1,6 +1,13 @@
 # Wordpress on OpenLiteSpeed
 
-[![php v7.3](https://github.com/ComputeStacks/cs-docker-wordpress/actions/workflows/php73.yml/badge.svg)](https://github.com/ComputeStacks/cs-docker-wordpress/actions/workflows/php73.yml) [![php v7.4](https://github.com/ComputeStacks/cs-docker-wordpress/actions/workflows/php74.yml/badge.svg)](https://github.com/ComputeStacks/cs-docker-wordpress/actions/workflows/php74.yml)
+[![gitlab ci](https://git.cmptstks.com/cs-public/images/wordpress/badges/main/pipeline.svg)](https://git.cmptstks.com/cs-public/images/wordpress/-/jobs)
 
-* [php7.3](https://github.com/ComputeStacks/cs-docker-wordpress/tree/main/php7.3-litespeed)
-* [php7.4](https://github.com/ComputeStacks/cs-docker-wordpress/tree/main/php7.4-litespeed)
+## Submitting Issues
+
+You may open an issue on our gitlab instance, [here](https://git.cmptstks.com/cs-public/images/wordpress/-/issues). However, for questions or how-to's, please [post on our forum](https://forum.computestacks.com).
+
+
+## Contributing
+
+Contributions are welcome! Before you submit a pull request, feel free to [post on our forum](https://forum.computestacks.com) your idea and we can have a discussion.
+

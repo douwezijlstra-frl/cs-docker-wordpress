@@ -1,9 +1,9 @@
-FROM cmptstks/php:7.4-litespeed
+FROM cr.cmptstks.com/cs-public/images/php:7.4-litespeed
 
-LABEL maintainer="https://github.com/ComputeStacks"
-LABEL org.opencontainers.image.authors="https://github.com/ComputeStacks"
-LABEL org.opencontainers.image.source="https://github.com/ComputeStacks/cs-docker-wordpress/tree/main/php7.4-litespeed"
-LABEL org.opencontainers.image.url="https://github.com/ComputeStacks/cs-docker-wordpress/tree/main/php7.4-litespeed"
+LABEL maintainer="https://computestacks.com"
+LABEL org.opencontainers.image.authors="https://computestacks.com"
+LABEL org.opencontainers.image.source="https://git.cmptstks.com/cs-public/images/wordpress/-/tree/main/php7.4-litespeed"
+LABEL org.opencontainers.image.url="https://git.cmptstks.com/cs-public/images/wordpress/-/tree/main/php7.4-litespeed"
 LABEL org.opencontainers.image.title="Wordpress with PHP 7.4 and OpenLiteSpeed"
 
 COPY 25-wordpress.sh /etc/my_init.d/
