@@ -12,26 +12,26 @@ variables:
   DH_IMAGE: cmptstks/wordpress
   DH_VERSION_TAG: php7.4-litespeed
     
+default:
+  tags:
+    - shell
+  before_script:
+    - echo "$CI_REGISTRY_PASSWORD" | docker login $CI_REGISTRY --username $CI_REGISTRY_USER --password-stdin
+    - echo "$DH_PW" | docker login -u $DH_USER --password-stdin
+  after_script:
+    - docker logout $CI_REGISTRY
+    - docker logout
+    
 stages:
   - build
   - deploy
     
 build:
   stage: build
-  tags:
-    - shell
-  before_script:
-  - echo "$CI_REGISTRY_PASSWORD" | docker login $CI_REGISTRY --username $CI_REGISTRY_USER --password-stdin
-  - echo "$DH_PW" | docker login -u $DH_USER --password-stdin
   script:
     - "docker build -t $FULL_IMAGE php7.4-litespeed"
 deploy:
   stage: deploy
-  tags:
-  - shell  
-  after_script:
-    - docker logout $CI_REGISTRY
-    - docker logout
   script:
     - "docker tag $FULL_IMAGE $CI_REGISTRY_IMAGE:$DH_VERSION_TAG"
     - "docker tag $FULL_IMAGE $CI_REGISTRY_IMAGE:latest"
