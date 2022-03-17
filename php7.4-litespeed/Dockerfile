@@ -11,7 +11,8 @@ COPY 51-wordpress.sh /etc/my_init.d/
 COPY root/vhosts /usr/src/lsws/conf/vhosts/
 
 RUN set -ex; \
-    chmod +x /etc/my_init.d/51-wordpress.sh \
+    rm /usr/local/lsws/conf/httpd_config.conf \
+    && chmod +x /etc/my_init.d/51-wordpress.sh \
     && chown lsadm: -R /usr/src/lsws/conf/vhosts/ \
     ; \
     wget -O /usr/local/bin/wp https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar \
@@ -21,5 +22,7 @@ RUN set -ex; \
     && cd /usr/src/wordpress \
     && wp core download --allow-root \
     && chown -R www-data:www-data /usr/src/wordpress
+
+COPY root/httpd_config.conf /usr/src/lsws/conf/httpd_config.conf
 
 VOLUME ["/var/www", "/usr/local/lsws"]
