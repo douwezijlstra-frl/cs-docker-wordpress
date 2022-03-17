@@ -10,8 +10,9 @@ COPY 51-cs-wp.sh /etc/my_init.d/
 COPY 51-wordpress.sh /etc/my_init.d/
 COPY root/vhosts /usr/src/lsws/conf/vhosts/
 
-RUN set -ex; \
-    rm /usr/local/lsws/conf/httpd_config.conf \
+RUN rm /usr/src/lsws/conf/httpd_config.conf \
+    ; \
+    chmod +x /etc/my_init.d/51-cs-wp.sh \
     && chmod +x /etc/my_init.d/51-wordpress.sh \
     && chown lsadm: -R /usr/src/lsws/conf/vhosts/ \
     ; \
