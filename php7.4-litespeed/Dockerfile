@@ -22,7 +22,12 @@ RUN rm /usr/src/lsws/conf/httpd_config.conf \
     mkdir -p /usr/src/wordpress \
     && cd /usr/src/wordpress \
     && wp core download --allow-root \
-    && chown -R www-data:www-data /usr/src/wordpress
+    && chown -R www-data:www-data /usr/src/wordpress \
+    ; \
+    wget -O /tmp/cswp.tar.gz https://git.cmptstks.com/cs-public/integrations/cs-wordpress-plugin/-/archive/main/cs-wordpress-plugin-main.tar.gz \
+    && tar -xzvf /tmp/cswp.tar.gz --directory /opt \
+    && rm -f /tmp/cswp.tar.gz \
+    && chown -R www-data: /opt/cs-wordpress-plugin-main
 
 COPY root/httpd_config.conf /usr/src/lsws/conf/httpd_config.conf
 

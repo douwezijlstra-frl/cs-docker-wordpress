@@ -42,8 +42,9 @@ if ! [ "$(ls -A)" ]; then
 if (isset($_SERVER['HTTP_X_FORWARDED_PROTO']) && $_SERVER['HTTP_X_FORWARDED_PROTO'] === 'https') {
   $_SERVER['HTTPS'] = 'on';
 }
-define('FS_METHOD', 'direct'); 
-define('WP_MEMORY_LIMIT', '96M');
+define( 'FS_METHOD', 'direct' ); 
+define( 'WP_MEMORY_LIMIT', '96M' );
+define( 'CS_PLUGIN_DIR', '/opt/cs-wordpress-plugin-main' );
 PHP
   if [ ! -e .htaccess ]; then
     cat > .htaccess <<-'EOF'
@@ -92,6 +93,10 @@ EOF
     sudo -u www-data wp language core install $WORDPRESS_LANGUAGE
     sudo -u www-data wp language core activate $WORDPRESS_LANGUAGE
   fi
+  
+  echo "Installing CS plugin"
+  sudo -u www-data mkdir -p wp-content/mu-plugins
+  sudo -u www-data cp /opt/cs-wordpress-plugin-main/cstacks-config.php wp-content/mu-plugins/
 
   echo >&2 "Restarting webserver to enable cache..."
   /usr/local/lsws/bin/lswsctrl restart
