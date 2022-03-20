@@ -23,12 +23,12 @@ RUN rm /usr/src/lsws/conf/httpd_config.conf \
     && chmod +x /etc/my_init.d/*.sh \
     && chown lsadm: -R /usr/src/lsws/conf/vhosts/ \
     ; \
+    chmod +x /usr/local/bin/wp \
+    ; \
     mkdir -p /usr/src/wordpress \
     && cd /usr/src/wordpress \
     && wp core download --allow-root \
     && chown -R www-data:www-data /usr/src/wordpress \
-    ; \
-    chmod +x /usr/local/bin/wp \
     ; \
     tar -xzvf /tmp/cswp.tar.gz --directory /opt \
     && rm -f /tmp/cswp.tar.gz \
