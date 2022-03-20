@@ -13,7 +13,9 @@ COPY 51-cs-wp.sh /etc/my_init.d/
 COPY 51-wordpress.sh /etc/my_init.d/
 COPY root/vhosts /usr/src/lsws/conf/vhosts/
 
-RUN rm /usr/src/lsws/conf/httpd_config.conf \
+RUN chmod 655 /usr/local/bin/wp \
+    ; \
+    rm /usr/src/lsws/conf/httpd_config.conf \
     ; \
     mkdir -p /usr/src/lsws/conf/vhosts/Wordpress \
     && touch /usr/src/lsws/conf/vhosts/Wordpress/htpasswd \
