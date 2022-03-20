@@ -13,10 +13,10 @@ COPY root/vhosts /usr/src/lsws/conf/vhosts/
 RUN rm /usr/src/lsws/conf/httpd_config.conf \
     ; \
     mkdir -p /usr/src/lsws/conf/vhosts/Wordpress \
-    && touch /usr/local/lsws/conf/vhosts/Wordpress/htpasswd \
-    && touch /usr/local/lsws/conf/vhosts/Wordpress/htgroup \
-    && chmod 644 /usr/local/lsws/conf/vhosts/Wordpress/htpasswd \
-    && chmod 644 /usr/local/lsws/conf/vhosts/Wordpress/htgroup \
+    && touch /usr/src/lsws/conf/vhosts/Wordpress/htpasswd \
+    && touch /usr/src/lsws/conf/vhosts/Wordpress/htgroup \
+    && chmod 644 /usr/src/lsws/conf/vhosts/Wordpress/htpasswd \
+    && chmod 644 /usr/src/lsws/conf/vhosts/Wordpress/htgroup \
     && chmod +x /etc/my_init.d/*.sh \
     && chown lsadm: -R /usr/src/lsws/conf/vhosts/ \
     ; \
