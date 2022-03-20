@@ -17,8 +17,7 @@ RUN rm /usr/src/lsws/conf/httpd_config.conf \
     && touch /usr/local/lsws/conf/vhosts/Wordpress/htgroup \
     && chmod 644 /usr/local/lsws/conf/vhosts/Wordpress/htpasswd \
     && chmod 644 /usr/local/lsws/conf/vhosts/Wordpress/htgroup \
-    && chmod +x /etc/my_init.d/51-cs-wp.sh \
-    && chmod +x /etc/my_init.d/51-wordpress.sh \
+    && chmod +x /etc/my_init.d/*.sh \
     && chown lsadm: -R /usr/src/lsws/conf/vhosts/ \
     ; \
     wget -O /usr/local/bin/wp https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar \
