@@ -12,7 +12,12 @@ COPY root/vhosts /usr/src/lsws/conf/vhosts/
 
 RUN rm /usr/src/lsws/conf/httpd_config.conf \
     ; \
-    chmod +x /etc/my_init.d/51-cs-wp.sh \
+    mkdir -p /usr/src/lsws/conf/vhosts/Wordpress \
+    && touch /usr/local/lsws/conf/vhosts/Wordpress/htpasswd \
+    && touch /usr/local/lsws/conf/vhosts/Wordpress/htgroup \
+    && chmod 644 /usr/local/lsws/conf/vhosts/Wordpress/htpasswd \
+    && chmod 644 /usr/local/lsws/conf/vhosts/Wordpress/htgroup \
+    && chmod +x /etc/my_init.d/51-cs-wp.sh \
     && chmod +x /etc/my_init.d/51-wordpress.sh \
     && chown lsadm: -R /usr/src/lsws/conf/vhosts/ \
     ; \
