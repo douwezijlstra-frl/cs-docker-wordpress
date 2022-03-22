@@ -12,6 +12,7 @@ ADD https://git.cmptstks.com/cs-public/integrations/cs-wordpress-plugin/-/archiv
 COPY 51-cs-wp.sh /etc/my_init.d/
 COPY 51-wordpress.sh /etc/my_init.d/
 COPY root/vhosts /usr/src/lsws/conf/vhosts/
+COPY enable_protected.sh /usr/local/bin/enable_protected
 
 RUN chmod 655 /usr/local/bin/wp \
     ; \
@@ -34,7 +35,8 @@ RUN chmod 655 /usr/local/bin/wp \
     ; \
     tar -xzvf /tmp/cswp.tar.gz --directory /opt \
     && rm -f /tmp/cswp.tar.gz \
-    && chown -R www-data: /opt/cs-wordpress-plugin-main
+    && chown -R www-data: /opt/cs-wordpress-plugin-main \
+    && chmod +x /usr/local/bin/enable_protected
 
 COPY root/httpd_config.conf /usr/src/lsws/conf/httpd_config.conf
 
