@@ -10,7 +10,6 @@ workflow:
 variables:
   FULL_IMAGE: $CI_REGISTRY_IMAGE:$CI_COMMIT_SHORT_SHA-$CI_PIPELINE_ID
   DH_IMAGE: cmptstks/wordpress
-  DH_VERSION_TAG: php7.4-litespeed
     
 default:
   tags:
@@ -29,16 +28,29 @@ stages:
 build:
   stage: build
   script:
-    - "docker build --no-cache -t $FULL_IMAGE php7.4-litespeed"
+    - "docker build --no-cache -t $FULL_IMAGE-74 php7.4-litespeed"
+    - "docker build --no-cache -t $FULL_IMAGE-80 php8.0-litespeed"
+    - "docker build --no-cache -t $FULL_IMAGE-81 php8.1-litespeed"
+
 deploy:
   stage: deploy
   script:
-    - "docker tag $FULL_IMAGE $CI_REGISTRY_IMAGE:$DH_VERSION_TAG"
-    - "docker tag $FULL_IMAGE $CI_REGISTRY_IMAGE:latest"
-    - "docker tag $FULL_IMAGE $DH_IMAGE:$DH_VERSION_TAG"
-    - "docker tag $FULL_IMAGE $DH_IMAGE:latest"
-    - "docker push $FULL_IMAGE"
+    - "docker tag $FULL_IMAGE-74 $CI_REGISTRY_IMAGE:php7.4-litespeed"
+    - "docker tag $FULL_IMAGE-80 $CI_REGISTRY_IMAGE:php8.0-litespeed"
+    - "docker tag $FULL_IMAGE-81 $CI_REGISTRY_IMAGE:php8.1-litespeed"
+    - "docker tag $FULL_IMAGE-81 $CI_REGISTRY_IMAGE:latest"
+    - "docker tag $FULL_IMAGE-74 $DH_IMAGE:php7.4-litespeed"
+    - "docker tag $FULL_IMAGE-80 $DH_IMAGE:php8.0-litespeed"
+    - "docker tag $FULL_IMAGE-81 $DH_IMAGE:php8.1-litespeed"
+    - "docker tag $FULL_IMAGE-81 $DH_IMAGE:latest"
+    - "docker push $FULL_IMAGE-74"
+    - "docker push $FULL_IMAGE-80"
+    - "docker push $FULL_IMAGE-81"
+    - "docker push $CI_REGISTRY_IMAGE:php7.4-litespeed"
+    - "docker push $CI_REGISTRY_IMAGE:php8.0-litespeed"
+    - "docker push $CI_REGISTRY_IMAGE:php8.1-litespeed"
     - "docker push $CI_REGISTRY_IMAGE:latest"
-    - "docker push $CI_REGISTRY_IMAGE:$DH_VERSION_TAG"
     - "docker push $DH_IMAGE:php7.4-litespeed"
+    - "docker push $DH_IMAGE:php8.0-litespeed"
+    - "docker push $DH_IMAGE:php8.1-litespeed"
     - "docker push $DH_IMAGE:latest"
