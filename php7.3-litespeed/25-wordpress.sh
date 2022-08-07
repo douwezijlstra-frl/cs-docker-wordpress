@@ -95,5 +95,9 @@ EOF
 
   echo >&2 "Restarting webserver to enable cache..."
   /usr/local/lsws/bin/lswsctrl restart
+else
+
+  echo "Setting DB Host"
+  sudo -u www-data wp config set DB_HOST $WORDPRESS_DB_HOST
 
 fi
