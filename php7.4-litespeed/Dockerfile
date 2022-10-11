@@ -1,4 +1,4 @@
-FROM cr.cmptstks.com/cs-public/images/php:7.4-litespeed
+FROM cscr.cc/cs-public/images/php:7.4-litespeed
 
 LABEL maintainer="https://computestacks.com"
 LABEL org.opencontainers.image.authors="https://computestacks.com"
