@@ -2,8 +2,8 @@ FROM ghcr.io/computestacks/cs-docker-php:7.4-litespeed
 
 LABEL maintainer="https://computestacks.com"
 LABEL org.opencontainers.image.authors="https://computestacks.com"
-LABEL org.opencontainers.image.source="https://git.cmptstks.com/cs-public/images/wordpress/-/tree/main/php7.4-litespeed"
-LABEL org.opencontainers.image.url="https://git.cmptstks.com/cs-public/images/wordpress/-/tree/main/php7.4-litespeed"
+LABEL org.opencontainers.image.source="https://github.com/ComputeStacks/cs-docker-wordpress/tree/main/php7.4-litespeed"
+LABEL org.opencontainers.image.url="https://github.com/ComputeStacks/cs-docker-wordpress/tree/main/php7.4-litespeed"
 LABEL org.opencontainers.image.title="Wordpress with PHP 7.4 and OpenLiteSpeed"
 
 ADD https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar /usr/local/bin/wp
