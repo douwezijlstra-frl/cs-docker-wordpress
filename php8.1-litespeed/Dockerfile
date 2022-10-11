@@ -1,4 +1,4 @@
-FROM cscr.cc/cs-public/images/php:8.1-litespeed
+FROM ghcr.io/computestacks/cs-docker-php:8.1-litespeed
 
 LABEL maintainer="https://computestacks.com"
 LABEL org.opencontainers.image.authors="https://computestacks.com"

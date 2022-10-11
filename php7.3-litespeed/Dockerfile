@@ -1,4 +1,4 @@
-FROM cmptstks/php:7.3-litespeed
+FROM ghcr.io/computestacks/cs-docker-php:7.3-litespeed
 
 LABEL maintainer="https://github.com/ComputeStacks"
 LABEL org.opencontainers.image.authors="https://github.com/ComputeStacks"
