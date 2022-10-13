@@ -2,7 +2,7 @@ name: "PHP 8.0"
 
 on:
   schedule:
-    - cron: '35 21 * * 2'
+    - cron: '35 20 * * 2'
   push:
     branches: [ "main" ]
     paths:
