@@ -1,6 +1,7 @@
 #!/bin/bash
 
 mkdir -p /var/www/html/wordpress && chown www-data:www-data /var/www/html/wordpress
+mkdir -p /var/www/logs && chown www-data:www-data /var/www/logs
 cd /var/www/html/wordpress
 
 wait_for_db() {
