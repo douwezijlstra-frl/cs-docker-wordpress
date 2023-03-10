@@ -1,5 +1,7 @@
 # Wordpress on OpenLiteSpeed
 
+[![PHP 8.2](https://github.com/ComputeStacks/cs-docker-wordpress/actions/workflows/php8-2.yml/badge.svg)](https://github.com/ComputeStacks/cs-docker-wordpress/actions/workflows/php8-2.yml)
+
 [![PHP 8.1](https://github.com/ComputeStacks/cs-docker-wordpress/actions/workflows/php8-1.yml/badge.svg)](https://github.com/ComputeStacks/cs-docker-wordpress/actions/workflows/php8-1.yml)
 
 [![PHP 8.0](https://github.com/ComputeStacks/cs-docker-wordpress/actions/workflows/php8-0.yml/badge.svg)](https://github.com/ComputeStacks/cs-docker-wordpress/actions/workflows/php8-0.yml)
