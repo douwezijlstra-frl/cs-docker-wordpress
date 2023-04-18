@@ -9,7 +9,7 @@ LABEL org.opencontainers.image.title="Wordpress with PHP 7.4 and OpenLiteSpeed"
 ADD https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar /usr/local/bin/wp
 ADD https://codeload.github.com/ComputeStacks/cs-wp-plugin/tar.gz/refs/heads/main /tmp/cswp.tar.gz
 
-COPY 51-cs-wp.sh /etc/my_init.d/
+COPY 52-cs-wp.sh /etc/my_init.d/
 COPY 51-wordpress.sh /etc/my_init.d/
 COPY root/vhosts /usr/src/lsws/conf/vhosts/
 COPY enable_protected.sh /usr/local/bin/enable_protected
