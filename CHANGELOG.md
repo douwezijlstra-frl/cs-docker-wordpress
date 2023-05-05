@@ -1,5 +1,11 @@
 # ComputeStacks Wordpress on OpenLiteSpeed Changelog
 
+## 2023-May-5
+
+* Ensure `mu-plugins` directory exists before installing our plugin.
+
+***
+
 ## 2023-Apr-19
 
 * Force WP-CRON to run via cronjobs, and disable per-request cron checks.
