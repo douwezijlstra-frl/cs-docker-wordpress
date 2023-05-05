@@ -3,6 +3,7 @@
 ## 2023-May-5
 
 * Ensure `mu-plugins` directory exists before installing our plugin.
+* Tweak lsphp defaults.
 
 ***
 
