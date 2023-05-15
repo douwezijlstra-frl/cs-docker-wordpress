@@ -1,5 +1,9 @@
 # ComputeStacks Wordpress on OpenLiteSpeed Changelog
 
+## 2023-May-15
+
+* Added expire headers for css,js,images,fonts.
+
 ## 2023-May-5
 
 * Ensure `mu-plugins` directory exists before installing our plugin.
