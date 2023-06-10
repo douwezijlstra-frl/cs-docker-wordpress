@@ -1,5 +1,9 @@
 # ComputeStacks Wordpress on OpenLiteSpeed Changelog
 
+## 2023-June-10
+
+* PHP 8.1 FPM with nginx added.
+
 ## 2023-May-15
 
 * Added expire headers for css,js,images,fonts.

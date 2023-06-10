@@ -25,6 +25,11 @@ build-php80:
     docker pull ghcr.io/computestacks/cs-docker-php:8.0-litespeed
     @just --justfile {{ justfile() }} build-image "php8.0-litespeed"
 
+# build php 8.1 nginx
+build-php81nginx: 
+    docker pull ghcr.io/computestacks/cs-docker-php:8.1-nginx
+    @just --justfile {{ justfile() }} build-image "php8.1-nginx"
+
 # build php 8.1
 build-php81: 
     docker pull ghcr.io/computestacks/cs-docker-php:8.1-litespeed
