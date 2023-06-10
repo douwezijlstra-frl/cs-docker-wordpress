@@ -1,4 +1,4 @@
-FROM registry.lumous.cloud:25001/php:8.1-nginx
+FROM ghcr.io/computestacks/cs-docker-php:8.1-nginx
 
 LABEL maintainer="https://computestacks.com"
 LABEL org.opencontainers.image.authors="https://computestacks.com"
