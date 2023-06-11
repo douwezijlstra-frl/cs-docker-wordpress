@@ -1,5 +1,8 @@
 # ComputeStacks Wordpress on OpenLiteSpeed Changelog
 
+## 2023-June-11
+
+* PHP 8.0 & 8.2 FPM with nginx
 ## 2023-June-10
 
 * PHP 8.1 FPM with nginx added.

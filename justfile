@@ -20,6 +20,11 @@ build-php74:
     docker pull ghcr.io/computestacks/cs-docker-php:7.4-litespeed
     @just --justfile {{ justfile() }} build-image "php7.4-litespeed"
 
+# build php 8.0 nginx
+build-php80nginx: 
+    docker pull ghcr.io/computestacks/cs-docker-php:8.0-nginx
+    @just --justfile {{ justfile() }} build-image "php8.0-nginx"
+
 # build php 8.0
 build-php80: 
     docker pull ghcr.io/computestacks/cs-docker-php:8.0-litespeed
@@ -34,6 +39,11 @@ build-php81nginx:
 build-php81: 
     docker pull ghcr.io/computestacks/cs-docker-php:8.1-litespeed
     @just --justfile {{ justfile() }} build-image "php8.1-litespeed"
+
+# build php 8.2 nginx
+build-php82nginx: 
+    docker pull ghcr.io/computestacks/cs-docker-php:8.2-nginx
+    @just --justfile {{ justfile() }} build-image "php8.2-nginx"
 
 # build php 8.2
 build-php82:
