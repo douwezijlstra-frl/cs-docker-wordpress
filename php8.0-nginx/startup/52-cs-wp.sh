@@ -8,7 +8,7 @@ if [ -z ${CS_AUTH_KEY} ]; then
 fi
 
 # Ensure we always have the correct auth key.
-sed -i "s/env\[CS_AUTH_KEY\] = .*/env\[CS_AUTH_KEY\] = '$CS_AUTH_KEY'/g" /etc/php/8.1/fpm/pool.d/www.conf
+sed -i "s/env\[CS_AUTH_KEY\] = .*/env\[CS_AUTH_KEY\] = '$CS_AUTH_KEY'/g" /etc/php/8.0/fpm/pool.d/www.conf
 
 if [ -f "/opt/cs-wordpress-plugin-main/cstacks-config.php" ]; then
   echo >&2 "Updating ComputeStacks integration with latest version..."
