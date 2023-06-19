@@ -14,6 +14,8 @@ COPY startup/51-wordpress.sh /etc/my_init.d/
 ADD conf/fpm-pool.conf /etc/php/8.2/fpm/pool.d/www.conf
 ADD nginx/nginx.conf /etc/nginx/nginx.conf
 ADD nginx/site.conf /etc/nginx/sites-available/default
+ADD nginx/multisite-subdomain.conf /etc/nginx/sites-available/multisite-subdomain
+ADD nginx/multisite-subfolder.conf /etc/nginx/sites-available/multisite-subfolder
 
 RUN chmod 655 /usr/local/bin/wp \
     ; \

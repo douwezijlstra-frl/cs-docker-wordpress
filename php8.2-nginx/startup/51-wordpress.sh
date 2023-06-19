@@ -47,7 +47,7 @@ define( 'WP_MEMORY_LIMIT', '96M' );
 define( 'CS_PLUGIN_DIR', '/opt/cs-wordpress-plugin-main' );
 PHP
 
-  echo >&2 "Installing Wordpress..."
+  echo >&2 "Installing WordPress..."
   sudo -u www-data wp core install --url=$WORDPRESS_URL --title="$WORDPRESS_TITLE" --admin_user=$WORDPRESS_USER --admin_password=$WORDPRESS_PASSWORD --admin_email="$WORDPRESS_EMAIL" --skip-email
 
   if [[ -z "$WORDPRESS_PLUGINLIST" ]]; then
