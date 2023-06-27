@@ -1,5 +1,8 @@
 # ComputeStacks Wordpress on OpenLiteSpeed Changelog
 
+## 2023-June-27
+* Added example multisite configurations for nginx
+
 ## 2023-June-15
 
 * PHP 7.4 FPM with nginx.
