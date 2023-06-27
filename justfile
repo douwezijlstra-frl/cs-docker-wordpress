@@ -4,6 +4,18 @@ default:
 
 # build all images
 build-all:
+    just build-nginx
+    just build-litespeed
+
+# build all nginx images
+build-nginx:
+    just build-php74nginx
+    just build-php80nginx
+    just build-php81nginx
+    just build-php82nginx
+
+# build all litespeed images
+build-litespeed:
     just build-php73
     just build-php74
     just build-php80
@@ -19,6 +31,11 @@ build-php73:
 build-php74: 
     docker pull ghcr.io/computestacks/cs-docker-php:7.4-litespeed
     @just --justfile {{ justfile() }} build-image "php7.4-litespeed"
+
+# build php 7.4 nginx
+build-php74nginx: 
+    docker pull ghcr.io/computestacks/cs-docker-php:7.4-nginx
+    @just --justfile {{ justfile() }} build-image "php7.4-nginx"
 
 # build php 8.0 nginx
 build-php80nginx: 
