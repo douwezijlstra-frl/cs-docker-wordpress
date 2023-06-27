@@ -1,4 +1,4 @@
-# Wordpress on OpenLiteSpeed
+# WordPress on OpenLiteSpeed and nginx
 
 [![PHP 8.2](https://github.com/ComputeStacks/cs-docker-wordpress/actions/workflows/php8-2.yml/badge.svg)](https://github.com/ComputeStacks/cs-docker-wordpress/actions/workflows/php8-2.yml)
 
