@@ -1,5 +1,6 @@
 #!/bin/bash
 
+
 mkdir -p /var/www/html/wordpress && chown www-data:www-data /var/www/html/wordpress
 cd /var/www/html/wordpress
 
