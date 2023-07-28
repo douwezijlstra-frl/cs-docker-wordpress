@@ -4,15 +4,13 @@ mkdir -p /var/www/html/wordpress && chown www-data:www-data /var/www/html/wordpr
 cd /var/www/html/wordpress
 
 # check if /etc/nginx/sites-available/multisite-subdirectory.conf exists, if not copy it to /var/www/nginx/multisite-subdirectory.conf.example
-  if [ -f /etc/nginx/sites-available/multisite-subdirectory.conf ]; then
-    cp /etc/nginx/sites-available/multisite-subdirectory.conf /var/www/nginx/multisite-subdirectory.conf.example
-  fi
+if [ -f /etc/nginx/sites-available/multisite-subdirectory.conf ]; then
+  cp /etc/nginx/sites-available/multisite-subdirectory.conf /var/www/nginx/multisite-subdirectory.conf.example
+fi
 # check if /etc/nginx/sites-available/multisite-subdomain.conf exists, if not copy it to /var/www/nginx/multisite-subdomain.conf.example
-  if [ -f /etc/nginx/sites-available/multisite-subdomain.conf ]; then
-    cp /etc/nginx/sites-available/multisite-subdomain.conf /var/www/nginx/multisite-subdomain.conf.example
-  fi
-
-
+if [ -f /etc/nginx/sites-available/multisite-subdomain.conf ]; then
+  cp /etc/nginx/sites-available/multisite-subdomain.conf /var/www/nginx/multisite-subdomain.conf.example
+fi
 
 wait_for_db() {
   counter=0
