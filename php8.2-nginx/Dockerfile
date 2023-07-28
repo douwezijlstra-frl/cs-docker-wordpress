@@ -16,6 +16,8 @@ ADD nginx/nginx.conf /etc/nginx/nginx.conf
 ADD nginx/site.conf /etc/nginx/sites-available/default
 ADD nginx/multisite-subdomain.conf /etc/nginx/sites-available/multisite-subdomain.conf
 ADD nginx/multisite-subdirectory.conf /etc/nginx/sites-available/multisite-subdirectory.conf
+ADD enable_protected.sh /usr/local/bin/enable_protected
+ADD disable_protected.sh /usr/local/bin/disable_protected
 
 RUN chmod 655 /usr/local/bin/wp \
     ; \
@@ -30,5 +32,9 @@ RUN chmod 655 /usr/local/bin/wp \
     tar -xzvf /tmp/cswp.tar.gz --directory /opt \
         && mv /opt/cs-wp-plugin-main /opt/cs-wordpress-plugin-main \
         && rm -f /tmp/cswp.tar.gz \
-        && chown -R www-data: /opt/cs-wordpress-plugin-main
+        && chown -R www-data: /opt/cs-wordpress-plugin-main \
+    ; \
+        chmod +x /usr/local/bin/enable_protected \
+        && chmod +x /usr/local/bin/disable_protected \
+        ;
 
